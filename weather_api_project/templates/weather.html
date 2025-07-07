@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial; background-color: #f4f4f4; text-align: center; padding: 50px; }
+        .weather-box { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        img { vertical-align: middle; }
+    </style>
+</head>
+<body>
+    <h1>Weather App 🌦️</h1>
+    <form method="POST">
+        <input type="text" name="city" placeholder="Enter city name" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if weather %}
+        <div class="weather-box">
+            <h2>{{ weather.city }}, {{ weather.region }}, {{ weather.country }}</h2>
+            <p><strong>Temperature:</strong> {{ weather.temperature }} °C</p>
+            <p><strong>Condition:</strong> {{ weather.condition }}</p>
+            <img src="{{ weather.icon }}" alt="Weather icon">
+        </div>
+    {% endif %}
+</body>
+</html>
